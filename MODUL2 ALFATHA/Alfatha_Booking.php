@@ -6,7 +6,7 @@ $cars = [
         "kursi" => 8,
         "cc" => 2393,
         'type' => 'Manual',
-        'image' => 'innova'
+        'image' => 'innova.jpg'
     ],
     [
         "nama" => "Creta",
@@ -14,7 +14,7 @@ $cars = [
         "kursi" => 6,
         "cc" => 1500,
         'type' => 'Manual',
-        'image' => 'creta'
+        'image' => 'creta.jpg'
     ],
     [
         "nama" => "Freed",
@@ -22,7 +22,7 @@ $cars = [
         "kursi" => 7,
         "cc" => 1500,
         'type' => 'Automatic',
-        'image' => 'freed'
+        'image' => 'freed.jpg'
     ],
 
 ]
@@ -37,7 +37,7 @@ $cars = [
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP-2</title>
+    <title>EAD RENT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -68,71 +68,71 @@ $cars = [
     <div class="container">
         <div class="row">
             <div class="col">
-                <?php if (isset($_GET['img'])) : ?>
-                    <img src="<?= $_GET['img'] ?>" alt="" class="img-fluid">
+                <?php if (isset($_GET['image'])) : ?>
+                    <img src="<?= $_GET['image'] ?>.jpg" alt="" class="img-fluid">
                 <?php else : ?>
                     <img src="creta.jpg" alt="" class="img-fluid">
                 <?php endif; ?>
             </div>
             <div class="col">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="name" name="name">
-                </div>
-                <div class="mb-3">
-                    <label for="datebook" class="form-label">Book Date</label>
-                    <input type="date" class="form-control" id="datebook" name="datebook">
-                </div>
-                <div class="mb-3">
-                    <label for="time" class="form-label">Start Time</label>
-                    <input type="time" class="form-control" id="time" name="time">
-                </div>
-                <div class="mb-3">
-                    <label for="duration" class="form-label">Duration (days)</label>
-                    <input type="number" class="form-control" id="duration" name="duration">
-                </div>
-
-                <div class="mb-3">
-                    <label for="choice" class="form-label">Car Type</label>
-                    <select class="form-select" id="choice">
-                        <?php if (!isset($_GET['image'])) : ?>
-                            <?php foreach ($cars as $car) : ?>
-                                <option value="<?= $car['nama'] ?>"><?= $car['nama'] ?></option>
-                            <?php endforeach; ?>
-
-                        <?php else : ?>
-                            <option value="<?= $_GET['namecar'] ?>"><?= $_GET['namecar'] ?></option>
-                        <?php endif; ?>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label for="numberphone" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" id="numberphone" name="numberphone">
-                </div>
-                <div>
-                    <p>Add Service(s)</p>
-                    <div class="mb-3 form-check">
-                        <div>
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="health">
-                            <label class="form-check-label" for="exampleCheck1">Rp. 50000/Health Protocol</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="driver">
-                            <label class="form-check-label" for="exampleCheck1">Rp. 250000/Driver</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="fueltank">
-                            <label class="form-check-label" for="exampleCheck1">Rp. 500000/Fuel Filled</label>
-                        </div>
-
+                <form action="Alfatha_MyBooking.php" method="post">
+                    <input type="hidden" name="id" value="<?= rand()?>">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="name" name="name">
                     </div>
-                </div>
-                <div class="d-grid gap-2">
-                    <input type="submit" class="btn btn-success" name="submit" value="Book Now">
-                </div>
-                </form>
+                    <div class="mb-3">
+                        <label for="datebook" class="form-label">Book Date</label>
+                        <input type="date" class="form-control" id="datebook" name="datebook">
+                    </div>
+                    <div class="mb-3">
+                        <label for="time" class="form-label">Start Time</label>
+                        <input type="time" class="form-control" id="time" name="time">
+                    </div>
+                    <div class="mb-3">
+                        <label for="duration" class="form-label">Duration (days)</label>
+                        <input type="number" class="form-control" id="duration" name="duration">
+                    </div>
 
+                    <div class="mb-3">
+                        <label for="choice" class="form-label">Car Type</label>
+                        <select class="form-select" id="choice" name="choice">
+                            <?php if (!isset($_GET['image'])) : ?>
+                                <?php foreach ($cars as $car) : ?>
+                                    <option value="<?= $car['nama'] ?>"><?= $car['nama'] ?></option>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <option value="<?= $_GET['nama'] ?>"><?= $_GET['nama'] ?></option>
+                            <?php endif; ?>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="numberphone" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="numberphone" name="numberphone">
+                    </div>
+                    <div>
+                        <p>Add Service(s)</p>
+                        <div class="mb-3 form-check">
+                            <div>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="health">
+                                <label class="form-check-label" for="exampleCheck1">Rp. 50000/Health Protocol</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="driver">
+                                <label class="form-check-label" for="exampleCheck1">Rp. 250000/Driver</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="fueltank">
+                                <label class="form-check-label" for="exampleCheck1">Rp. 500000/Fuel Filled</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <input type="submit" class="btn btn-primary" value="BOOK NOW">
+                    </div>
+                </form>
 
             </div>
         </div>
@@ -144,8 +144,8 @@ $cars = [
                 <p class="mb-1">Created by Alfatha_1202200281</p>
                 <div class="row justify-content-center">
                     <div class="col-lg-2 mb-1">
-            </div>
-        </div>
+                    </div>
+                </div>
     </footer>
 
 
